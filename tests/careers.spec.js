@@ -13,6 +13,14 @@ test.describe('First test', () => {
     await sharedStep.acceptCookies()
   });
 
+  test.afterEach(async ({ page }, testInfo) => {
+    if (testInfo.status !== 'passed') {
+      const screenshotPath = `screenshots/${testInfo.title.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
+      await page.screenshot({ path: screenshotPath, fullPage: true });
+      console.log(`Screenshot saved: ${screenshotPath}`);
+    }
+  });
+
   test.only('TC02 - Verify open positions', async ({ page }) => {
     await careersPage.navigateToCareersPage();
     await careersPage.verifyCareersURL();
