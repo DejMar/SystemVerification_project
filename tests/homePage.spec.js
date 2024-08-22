@@ -14,6 +14,10 @@ test.describe('First test', () => {
     await sharedStep.acceptCookies()
   });
 
+  test.afterEach(async ({ page }, testInfo) => {
+    await sharedStep.takeScreenshotOnFailure(page, testInfo);
+  });
+
   test('TC03 - Verify offerings menu items', async ({ page }) => {
     await homePage.clickOnOfferingsLink();
     await sharedStep.saveJsonFileWithSubMenuItems('Offerings');

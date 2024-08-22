@@ -9,10 +9,10 @@ export class SharedStep {
     async compareJsonFiles(filePath1, fileName1, filePath2, fileName2) {
         const fullFilePath1 = path.join(__dirname, filePath1, fileName1);
         const fullFilePath2 = path.join(__dirname, filePath2, fileName2);
-    
+
         const file1 = JSON.parse(fs.readFileSync(fullFilePath1, 'utf8'));
         const file2 = JSON.parse(fs.readFileSync(fullFilePath2, 'utf8'));
-    
+
         return JSON.stringify(file1) === JSON.stringify(file2);
     }
     async acceptCookies() {
@@ -38,5 +38,13 @@ export class SharedStep {
 
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
         fs.writeFileSync(filePath, JSON.stringify(subMenuItemsData, null, 2));
+    }
+
+    async takeScreenshotOnFailure(page, testInfo) {
+        if (testInfo.status !== 'passed') {
+            const screenshotPath = `screenshots/${testInfo.title.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
+            await page.screenshot({ path: screenshotPath, fullPage: true });
+            console.log(`Screenshot saved: ${screenshotPath}`);
+        }
     }
 }
