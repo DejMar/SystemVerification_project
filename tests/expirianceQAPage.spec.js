@@ -26,4 +26,9 @@ test.describe('Experiance QA page', () => {
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.articleFile, comparingLinks.testResultsPath, comparingLinks.actualArticles);
     expect(result).toBe(true);
   });
+
+  test('TC08 - Verify article counts by type', async ({ page }) => {
+    await expirianceQAPage.navigateToExpirianceQaPage();
+    await expirianceQAPage.saveArticleCountsToFile();
+  });
 });
