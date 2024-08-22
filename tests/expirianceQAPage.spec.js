@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 import { ExpirianceQAPage } from "../page-object/ExperianceQAPage";
-import { comparingLinks } from "../data/DataLinks"
+import { comparingLinks } from "../helpers/DataLinks"
 import { SharedStep } from "../helpers/SharedStep.js";
 
 test.describe('First test', () => {
@@ -19,6 +19,7 @@ test.describe('First test', () => {
     await expirianceQAPage.verifyArticleURL();
     await expirianceQAPage.createJsonFileWithTeaserText('ArticleInfo');
     await expirianceQAPage.saveArticleCountsToFile();
-    await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.articleFile, comparingLinks.testResultsPath, comparingLinks.actualArticles);
+    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.articleFile, comparingLinks.testResultsPath, comparingLinks.actualArticles);
+    expect(result).toBe(true);
   });
 });

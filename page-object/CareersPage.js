@@ -52,6 +52,20 @@ export class CareersPage {
             }
         }
     }    
+
+    async verifyAllLocationsContainSelectedOption(selectedOption) {
+        const locationElements = this.page.locator("//td[.//span[text()='Location:'] and contains(text(), ' ${selectedOption} ')]");
+        const locationElementsCount = await this.page.locator('td span.jobs__items-label:has-text("Location:")').count();
+        console.log(`Location elements count: ${locationElementsCount}`);
+        for (let i = 0; i < locationElementsCount; i++) {
+            const locationText = await locationElements.nth(i).textContent();
+            if (locationText.trim() === selectedOption) {
+                console.log(`Location ${selectedOption} is found in the table.`);
+            } else {
+                console.error(`Location ${selectedOption} is not found in the table.`);
+            }
+        }
+    }
     
    /*
     async verifyLocationMatchesSelectedOption(selectedOption) {

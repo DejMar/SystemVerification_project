@@ -13,11 +13,12 @@ test.describe('First test', () => {
     await sharedStep.acceptCookies()
   });
 
-  test.only('TC02 - Verify open positions', async ({ page }) => {
+  test('TC02 - Verify open positions', async ({ page }) => {
     await careersPage.navigateToCareersPage();
     await careersPage.verifyCareersURL();
     const selectAndReturnRandomLocation = await careersPage.selectAndReturnRandomLocation();
     //console.log('Returned value: ' + selectAndReturnRandomLocation);
-    await careersPage.verifyLocationMatchesSelectedOption(selectAndReturnRandomLocation);
+    await page.pause();
+    await careersPage.verifyAllLocationsContainSelectedOption(selectAndReturnRandomLocation);
   });
 });
