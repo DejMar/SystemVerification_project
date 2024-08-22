@@ -12,6 +12,14 @@ test.describe('First test', () => {
     sharedStep = new SharedStep(page);
     await page.goto('/');
   });
+  
+  test.afterEach(async ({ page }, testInfo) => {
+    if (testInfo.status !== 'passed') {
+      const screenshotPath = `screenshots/${testInfo.title.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
+      await page.screenshot({ path: screenshotPath, fullPage: true });
+      console.log(`Screenshot saved: ${screenshotPath}`);
+    }
+  });
 
   test('TC01 - Verify News and Article page', async ({ page }) => {
     expect(page.url()).toBe('https://systemverification.com/en/');
