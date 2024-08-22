@@ -26,21 +26,21 @@ test.describe('First test', () => {
   });
 
   test('TC04 - Verify experiance QA menu items', async ({ page }) => {
-    await homePage.clickOnOfferingsLink();
+    await homePage.clickOnExperianceQALink();
     await sharedStep.saveJsonFileWithSubMenuItems('ExperianceQA');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.ExperianceQA_File, comparingLinks.dataResultsPath, comparingLinks.ExperianceQA_ActualLinks);
     expect(result).toBe(true);
   });
 
   test('TC05- Verify careers menu items', async ({ page }) => {
-    await homePage.clickOnOfferingsLink();
+    await homePage.clickOnCareersLink();
     await sharedStep.saveJsonFileWithSubMenuItems('Careers');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.Careers_File, comparingLinks.dataResultsPath, comparingLinks.Careers_ActualLinks);
     expect(result).toBe(true);
   });
 
   test('TC06- Verify about menu items', async ({ page }) => {
-    await homePage.clickOnOfferingsLink();
+    await homePage.clickOnAboutLink();
     await sharedStep.saveJsonFileWithSubMenuItems('About');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.About_File, comparingLinks.dataResultsPath, comparingLinks.About_ActualLinks);
     expect(result).toBe(true);

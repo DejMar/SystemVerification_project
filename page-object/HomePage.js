@@ -4,6 +4,10 @@ export class HomePage {
     constructor(page) {
         this.page = page;
         this.offeringsLink = this.page.locator('a[href="#"]:has-text("Offerings")');
+        this.experianceQALink = this.page.locator('text="Experience QA"');
+
+        this.careersLink = this.page.locator('a[href="#"]:has-text("Careers")');
+        this.aboutLink = this.page.locator('a[href="#"]:has-text("About")');
     }
 
     async verifyArticleURL() {
@@ -12,6 +16,18 @@ export class HomePage {
 
     async clickOnOfferingsLink() {
         await this.offeringsLink.click();
+    }
+
+    async clickOnExperianceQALink() {
+        await this.experianceQALink.click();
+    }
+
+    async clickOnCareersLink() {
+        await this.careersLink.click();
+    }
+
+    async clickOnAboutLink() {
+        await this.aboutLink.click();
     }
 
     async saveJsonFileWithMenuItems() {

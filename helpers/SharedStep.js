@@ -29,11 +29,10 @@ export class SharedStep {
         const date = new Date().toISOString().split('T')[0];
         const filePath = path.join(__dirname, '../../SystemVerification_project/data-results', `${fileName}_${date}.json`);
 
-        const subMenuItems = await this.page.locator('ul.sub-menu li a').all();
+        const subMenuItems = await this.page.locator('ul.sub-menu.active li').all();
         const subMenuItemsData = await Promise.all(subMenuItems.map(async item => {
             const name = await item.textContent();
-            const link = await item.getAttribute('href');
-            return { name, link };
+            return { name };
         }));
 
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
