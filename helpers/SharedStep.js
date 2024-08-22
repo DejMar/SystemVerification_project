@@ -15,6 +15,7 @@ export class SharedStep {
 
         return JSON.stringify(file1) === JSON.stringify(file2);
     }
+    
     async acceptCookies() {
         const acceptButton = this.page.locator('button[id="hs-eu-confirmation-button"]');
         if (await acceptButton.count() > 0) {

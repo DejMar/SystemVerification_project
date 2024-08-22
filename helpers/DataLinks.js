@@ -10,8 +10,8 @@ export const comparingLinks = {
     Offerings_File: 'Offerings.json',
     Offerings_ActualLinks: `Offerings_${new Date().toISOString().split('T')[0]}.json`,
 
-    ExperianceQA_File: 'ExperianceQA.json',
-    ExperianceQA_ActualLinks: `ExperianceQA_${new Date().toISOString().split('T')[0]}.json`,
+    ExperienceQA_File: 'ExperienceQA.json',
+    ExperienceQA_ActualLinks: `ExperienceQA_${new Date().toISOString().split('T')[0]}.json`,
 
     Careers_File: 'Careers.json',
     Careers_ActualLinks: `Careers_${new Date().toISOString().split('T')[0]}.json`,
