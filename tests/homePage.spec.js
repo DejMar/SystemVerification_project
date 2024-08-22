@@ -18,35 +18,35 @@ test.describe('Home page', () => {
     await sharedStep.takeScreenshotOnFailure(page, testInfo);
   });
 
-  test('TC03 - Verify offerings menu items', async ({ page }) => {
+  test('TC03 - Verify offerings menu items', async ({ }) => {
     await homePage.clickOnOfferingsLink();
     await sharedStep.saveJsonFileWithSubMenuItems('Offerings');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.Offerings_File, comparingLinks.dataResultsPath, comparingLinks.Offerings_ActualLinks);
     expect(result).toBe(true);
   });
 
-  test('TC04 - Verify experiance QA menu items', async ({ page }) => {
+  test('TC04 - Verify experiance QA menu items', async ({ }) => {
     await homePage.clickOnExperianceQALink();
     await sharedStep.saveJsonFileWithSubMenuItems('ExperianceQA');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.ExperianceQA_File, comparingLinks.dataResultsPath, comparingLinks.ExperianceQA_ActualLinks);
     expect(result).toBe(true);
   });
 
-  test('TC05- Verify careers menu items', async ({ page }) => {
+  test('TC05- Verify careers menu items', async ({ }) => {
     await homePage.clickOnCareersLink();
     await sharedStep.saveJsonFileWithSubMenuItems('Careers');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.Careers_File, comparingLinks.dataResultsPath, comparingLinks.Careers_ActualLinks);
     expect(result).toBe(true);
   });
 
-  test('TC06- Verify about menu items', async ({ page }) => {
+  test('TC06- Verify about menu items', async ({ }) => {
     await homePage.clickOnAboutLink();
     await sharedStep.saveJsonFileWithSubMenuItems('About');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.About_File, comparingLinks.dataResultsPath, comparingLinks.About_ActualLinks);
     expect(result).toBe(true);
   });
 
-  test.only('TC07- Verify download file test', async ({ page }) => {
+  test('TC07- Verify download file test', async ({ page }) => {
     await homePage.clickOnOfferingsLink();
     await homePage.clickOnOption('Outsourcing');
     await homePage.clickOnDownloadButton();
