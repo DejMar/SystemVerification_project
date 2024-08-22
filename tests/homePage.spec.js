@@ -3,7 +3,7 @@ import { SharedStep } from "../helpers/SharedStep.js";
 import { comparingLinks } from "../helpers/DataLinks.js";
 import { HomePage } from "../page-object/HomePage.js";
 
-test.describe('First test', () => {
+test.describe('Home page', () => {
   let sharedStep;
   let homePage;
 
@@ -44,5 +44,12 @@ test.describe('First test', () => {
     await sharedStep.saveJsonFileWithSubMenuItems('About');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.About_File, comparingLinks.dataResultsPath, comparingLinks.About_ActualLinks);
     expect(result).toBe(true);
+  });
+
+  test.only('TC07- Verify download file test', async ({ page }) => {
+    await homePage.clickOnOfferingsLink();
+    await homePage.clickOnOption('Outsourcing');
+    await homePage.clickOnDownloadButton();
+    await page.pause()
   });
 });

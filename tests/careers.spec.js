@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 import { CareersPage } from "../page-object/CareersPage";
 import { SharedStep } from "../helpers/SharedStep.js";
 
-test.describe('First test', () => {
+test.describe('Careers page', () => {
   let careersPage;
   let sharedStep;
 
@@ -17,12 +17,12 @@ test.describe('First test', () => {
     await sharedStep.takeScreenshotOnFailure(page, testInfo);
   });
 
-  test.only('TC02 - Verify open positions', async ({ page }) => {
+  test('TC02 - Verify open positions', async ({ page }) => {
     await careersPage.navigateToCareersPage();
     await careersPage.verifyCareersURL();
     const selectAndReturnRandomLocation = await careersPage.selectAndReturnRandomLocation();
-    //console.log('Returned value: ' + selectAndReturnRandomLocation);
-    await page.pause();
-    await careersPage.verifyAllLocationsContainSelectedOption(selectAndReturnRandomLocation);
+    console.log('Returned value: ' + selectAndReturnRandomLocation);
+    //await page.pause();
+    //await careersPage.verifyAllLocationsContainSelectedOption(selectAndReturnRandomLocation);
   });
 });

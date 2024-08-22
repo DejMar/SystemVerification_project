@@ -3,7 +3,7 @@ import { ExpirianceQAPage } from "../page-object/ExperianceQAPage";
 import { comparingLinks } from "../helpers/DataLinks"
 import { SharedStep } from "../helpers/SharedStep.js";
 
-test.describe('First test', () => {
+test.describe('Experiance QA page', () => {
   let expirianceQAPage;
   let sharedStep;
 
