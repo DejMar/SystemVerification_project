@@ -2,6 +2,8 @@ const { test, expect } = require('@playwright/test');
 import { CareersPage } from "../page-object/CareersPage";
 import { SharedStep } from "../helpers/SharedStep.js";
 import { siteURL } from "../helpers/siteURL.js"
+import { MenuItems } from "../helpers/DataLinks.js";
+
 
 
 test.describe('Careers page', () => {
@@ -21,7 +23,7 @@ test.describe('Careers page', () => {
 
   test.only('TC02 - Verify open positions', async ({ page }) => {
     await sharedStep.verifyCurrentUrl(siteURL.SystemVerificationURL);
-    await sharedStep.navigateToSubMenu('Careers', 'Open postions')
+    await sharedStep.navigateToSubMenu(MenuItems.Careers.name, MenuItems.Careers.subMenus.OpenPositions);
     await sharedStep.verifyCurrentUrl(siteURL.OpenPositionsURL);
     const selectAndReturnRandomLocation = await careersPage.selectAndReturnRandomLocation();
     console.log('Returned value: ' + selectAndReturnRandomLocation);
@@ -29,3 +31,4 @@ test.describe('Careers page', () => {
     //await careersPage.verifyAllLocationsContainSelectedOption(selectAndReturnRandomLocation);
   });
 });
+

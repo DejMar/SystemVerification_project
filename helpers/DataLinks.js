@@ -19,3 +19,40 @@ export const comparingLinks = {
     About_File: 'About.json',
     About_ActualLinks: `About_${new Date().toISOString().split('T')[0]}.json`
 }
+
+
+export const MenuItems = {
+    About: {
+        name: 'About',
+        subMenus: {
+            FindUsAndOurOffices: 'Find us & our offices',
+            AboutUsAndOurHistory: 'About us & our history',
+            Partners: 'Partners'
+        }
+    },
+    Offerings: {
+        name: 'Offerings',
+        subMenus: {
+            // Add submenus for Offerings if available
+        }
+    },
+    ExperienceQA: {
+        name: 'Experience QA',
+        subMenus: {
+            // Add submenus for Experience QA if available
+        }
+    },
+    Careers: {
+        name: 'Careers',
+        subMenus: {
+            OpenPositions: 'Open postions'
+        }
+    },
+    Articles: {
+        name: 'Articles',
+        subMenus: {
+            // Add submenus for Articles if available
+        }
+    }
+};
+
