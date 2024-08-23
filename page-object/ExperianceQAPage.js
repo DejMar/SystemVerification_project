@@ -39,14 +39,14 @@ export class ExpirianceQAPage {
         return counts;
     }
 
-    async saveArticleCountsToFile() {
+    async saveArticleCountsToFile(articleName) {
         const counts = await this.getArticleCountsByType();
         const data = counts.map(count => `${count.Type}: ${count.Count}`).join('\n');
 
         const fs = require('fs');
         const path = require('path');
         const date = new Date().toISOString().split('T')[0];
-        const filePath = path.join(__dirname, '../../SystemVerification_project/test-results', `articleCounts_${date}.txt`);
+        const filePath = path.join(__dirname, '../../SystemVerification_project/test-results', `${articleName}_${date}.txt`);
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
         fs.writeFileSync(filePath, data);
     }

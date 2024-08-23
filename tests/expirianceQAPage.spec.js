@@ -28,14 +28,14 @@ test.describe('Experiance QA page', () => {
     await sharedStep.navigateToSubMenu(MenuItems.ExperienceQA.name, MenuItems.ExperienceQA.subMenus.NewsAndArticles);
     await sharedStep.verifyCurrentUrl(siteURL.NewsAndArticlesURL);
     await expirianceQAPage.createJsonFileWithTeaserText('ArticleInfo');
-    await expirianceQAPage.saveArticleCountsToFile();
+    await expirianceQAPage.saveArticleCountsToFile('ArticleCount_Sorted');
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.articleFile, comparingLinks.testResultsPath, comparingLinks.actualArticles);
     expect(result).toBe(true);
   });
 
   test('TC08 - Verify article counts by type', async ({ page }) => {
     await expirianceQAPage.navigateToExpirianceQaPage();
-    await expirianceQAPage.saveArticleCountsToFile();
+    await expirianceQAPage.saveArticleCountsToFile('ArticleCount_Sorted');
   });
 
   test('TC09 - Verify Industry articles', async ({ page }) => {

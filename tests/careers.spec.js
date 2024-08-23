@@ -19,7 +19,7 @@ test.describe('Careers page', () => {
     await sharedStep.takeScreenshotOnFailure(page, testInfo);
   });
 
-  test.only('TC02 - Verify open positions', async ({ page }) => {
+  test('TC02 - Verify open positions', async ({ page }) => {
     await sharedStep.verifyCurrentUrl(siteURL.SystemVerificationURL);
     await sharedStep.navigateToSubMenu(MenuItems.Careers.name, MenuItems.Careers.subMenus.OpenPositions);
     await sharedStep.verifyCurrentUrl(siteURL.OpenPositionsURL);
