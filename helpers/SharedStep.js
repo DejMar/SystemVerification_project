@@ -47,4 +47,17 @@ export class SharedStep {
             console.log(`Screenshot saved: ${screenshotPath}`);
         }
     }
+
+    async verifyCurrentUrl(expectedUrl) {
+        const currentUrl = this.page.url();
+        if (currentUrl !== expectedUrl) {
+            throw new Error(`URL mismatch. Expected: ${expectedUrl}, but got: ${currentUrl}`);
+        }
+        return true;
+    }
+
+    async navigateToSubMenu(menuOption, submenuOption) {
+        await this.page.locator(`text="${menuOption}"`).click();
+        await this.page.locator(`text="${submenuOption}"`).click();
+    }
 }

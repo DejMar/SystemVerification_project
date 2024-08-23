@@ -2,15 +2,21 @@ const { test, expect } = require('@playwright/test');
 import { ExpirianceQAPage } from "../page-object/ExperianceQAPage";
 import { comparingLinks } from "../helpers/DataLinks"
 import { SharedStep } from "../helpers/SharedStep.js";
+import { HomePage } from "../page-object/HomePage.js";
+import { siteURL } from "../helpers/siteURL.js"
+
 
 test.describe('Experiance QA page', () => {
   let expirianceQAPage;
   let sharedStep;
+  let homePage;
 
   test.beforeEach(async ({ page }) => {
     expirianceQAPage = new ExpirianceQAPage(page);
     sharedStep = new SharedStep(page);
+    homePage = new HomePage(page);
     await page.goto('/');
+    await sharedStep.acceptCookies()
   });
   
   test.afterEach(async ({ page }, testInfo) => {
@@ -18,9 +24,9 @@ test.describe('Experiance QA page', () => {
   });
 
   test('TC01 - Verify News and Article page', async ({ page }) => {
-    expect(page.url()).toBe('https://systemverification.com/en/');
-    await expirianceQAPage.navigateToExpirianceQaPage();
-    await expirianceQAPage.verifyArticleURL();
+    await sharedStep.verifyCurrentUrl(siteURL.SystemVerificationURL);
+    await sharedStep.navigateToSubMenu('Experience QA', 'News & Articles')
+    await sharedStep.verifyCurrentUrl(siteURL.NewsAndArticlesURL);
     await expirianceQAPage.createJsonFileWithTeaserText('ArticleInfo');
     await expirianceQAPage.saveArticleCountsToFile();
     const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.articleFile, comparingLinks.testResultsPath, comparingLinks.actualArticles);
@@ -30,5 +36,10 @@ test.describe('Experiance QA page', () => {
   test('TC08 - Verify article counts by type', async ({ page }) => {
     await expirianceQAPage.navigateToExpirianceQaPage();
     await expirianceQAPage.saveArticleCountsToFile();
+  });
+
+  test('TC09 - Verify Industry articles', async ({ page }) => {
+    await expirianceQAPage.navigateToExpirianceQaPage();
+    //await expirianceQAPage.
   });
 });

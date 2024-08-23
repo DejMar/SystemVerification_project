@@ -3,22 +3,10 @@ import { expect } from '@playwright/test'
 export class ExpirianceQAPage {
     constructor(page) {
         this.page = page;
-        this.articleURL = 'https://systemverification.com/en/articles/'
-        this.expirianceQaPage = page.locator('//*[@id="menu-item-3438"]/a')
-        this.newsAndArticles = page.locator('//*[@id="menu-item-3072"]/a')
         //this.articleList = 'col-12 col-md-3'
         this.articleTitle = page.locator('h3.teaser__headline.sv-headline-size-normal')
         this.articleType = page.locator('span.sv-label.sv-label--style-2')
         this.articleContents = page.locator('div.sv-wysiwyg.sv-text-size-normal')
-    }
-
-    navigateToExpirianceQaPage = async () => {
-        await this.expirianceQaPage.click();
-        await this.newsAndArticles.click();
-    }
-
-    async verifyArticleURL() {
-        expect(this.page.url()).toBe(this.articleURL);
     }
 
     async createJsonFileWithTeaserText(fileName) {
@@ -61,5 +49,34 @@ export class ExpirianceQAPage {
         const filePath = path.join(__dirname, '../../SystemVerification_project/test-results', `articleCounts_${date}.txt`);
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
         fs.writeFileSync(filePath, data);
+    }
+
+    async saveIndustryDataToJson(fileName) {
+        const industryElements = await this.page.$$('div.teaser__content');
+        const industryData = [];
+
+        for (const element of industryElements) {
+            const label = await element.$eval('span.sv-label', el => el.textContent.trim());
+            const headline = await element.$eval('h3.teaser__headline', el => el.textContent.trim());
+            const description = await element.$eval('div.sv-wysiwyg p', el => el.textContent.trim());
+            const buttonText = await element.$eval('a.btn', el => el.textContent.trim());
+            const buttonHref = await element.$eval('a.btn', el => el.getAttribute('href'));
+
+            industryData.push({
+                label,
+                headline,
+                description,
+                buttonText,
+                buttonHref
+            });
+        }
+
+        const fs = require('fs');
+        const path = require('path');
+        
+        const date = new Date().toISOString().split('T')[0];
+        const filePath = path.join(__dirname, '../../SystemVerification_project/test-results', `${fileName}_${date}.json`);
+        fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        fs.writeFileSync(filePath, JSON.stringify(industryData, null, 2));
     }
 }

@@ -47,7 +47,7 @@ test.describe('Home page', () => {
   });
 
   test('TC07 Verify download file test', async ({ page }) => {
-    await homePage.clickOnOfferingsLink();
+    await homePage.clickOnOption('Offerings');
     await homePage.clickOnOption('Outsourcing');
     await homePage.clickOnDownloadButton();
     await page.pause()
