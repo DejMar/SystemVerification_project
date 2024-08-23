@@ -4,8 +4,6 @@ import { SharedStep } from "../helpers/SharedStep.js";
 import { siteURL } from "../helpers/siteURL.js"
 import { MenuItems } from "../helpers/DataLinks.js";
 
-
-
 test.describe('Careers page', () => {
   let careersPage;
   let sharedStep;

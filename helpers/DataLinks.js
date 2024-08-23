@@ -40,6 +40,7 @@ export const MenuItems = {
         name: 'Experience QA',
         subMenus: {
             // Add submenus for Experience QA if available
+            NewsAndArticles: 'News & Articles'
         }
     },
     Careers: {

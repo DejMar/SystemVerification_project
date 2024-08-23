@@ -4,7 +4,7 @@ import { comparingLinks } from "../helpers/DataLinks"
 import { SharedStep } from "../helpers/SharedStep.js";
 import { HomePage } from "../page-object/HomePage.js";
 import { siteURL } from "../helpers/siteURL.js"
-
+import { MenuItems } from "../helpers/DataLinks.js";
 
 test.describe('Experiance QA page', () => {
   let expirianceQAPage;
@@ -25,7 +25,7 @@ test.describe('Experiance QA page', () => {
 
   test('TC01 - Verify News and Article page', async ({ page }) => {
     await sharedStep.verifyCurrentUrl(siteURL.SystemVerificationURL);
-    await sharedStep.navigateToSubMenu('Experience QA', 'News & Articles')
+    await sharedStep.navigateToSubMenu(MenuItems.ExperienceQA.name, MenuItems.ExperienceQA.subMenus.NewsAndArticles);
     await sharedStep.verifyCurrentUrl(siteURL.NewsAndArticlesURL);
     await expirianceQAPage.createJsonFileWithTeaserText('ArticleInfo');
     await expirianceQAPage.saveArticleCountsToFile();
