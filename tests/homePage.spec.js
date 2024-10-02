@@ -23,28 +23,28 @@ test.describe('Home page', () => {
   test('TC03 Verify offerings menu items', async ({ }) => {
     await homePage.clickOnOption(MenuItems.Offerings.name);
     await sharedStep.saveJsonFileWithSubMenuItems('Offerings');
-    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.Offerings_File, comparingLinks.dataResultsPath, comparingLinks.Offerings_ActualLinks);
+    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.Offerings_File, comparingLinks.dataResultsPath, comparingLinks.Offerings_ActualLinks);
     expect(result).toBe(true);
   });
 
   test('TC04 Verify experiance QA menu items', async ({ }) => {
     await homePage.clickOnOption(MenuItems.ExperienceQA.name);
     await sharedStep.saveJsonFileWithSubMenuItems('ExperienceQA');
-    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.ExperienceQA_File, comparingLinks.dataResultsPath, comparingLinks.ExperienceQA_ActualLinks);
+    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.ExperienceQA_File, comparingLinks.dataResultsPath, comparingLinks.ExperienceQA_ActualLinks);
     expect(result).toBe(true);
   });
 
   test('TC05 Verify careers menu items', async ({ }) => {
     await homePage.clickOnOption(MenuItems.Careers.name);
     await sharedStep.saveJsonFileWithSubMenuItems('Careers');
-    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.Careers_File, comparingLinks.dataResultsPath, comparingLinks.Careers_ActualLinks);
+    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.Careers_File, comparingLinks.dataResultsPath, comparingLinks.Careers_ActualLinks);
     expect(result).toBe(true);
   });
 
   test('TC06 Verify about menu items', async ({ }) => {
     await homePage.clickOnOption(MenuItems.About.name);
     await sharedStep.saveJsonFileWithSubMenuItems('About');
-    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath,  comparingLinks.About_File, comparingLinks.dataResultsPath, comparingLinks.About_ActualLinks);
+    const result = await sharedStep.compareJsonFiles(comparingLinks.dataPath, comparingLinks.About_File, comparingLinks.dataResultsPath, comparingLinks.About_ActualLinks);
     expect(result).toBe(true);
   });
 
@@ -52,5 +52,6 @@ test.describe('Home page', () => {
     await sharedStep.navigateToSubMenu(MenuItems.Offerings.name, MenuItems.Offerings.subMenus.DedicatedTeam.Outsourcing)
     await homePage.clickOnDownloadButton();
     await page.pause()
+    //TODO Verify download page is opened in another tab
   });
 });
