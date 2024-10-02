@@ -34,12 +34,12 @@ test.describe('Experiance QA page', () => {
   });
 
   test('TC08 - Verify article counts by type', async ({ page }) => {
-    await expirianceQAPage.navigateToExpirianceQaPage();
+    await sharedStep.navigateToSubMenu(MenuItems.ExperienceQA.name, MenuItems.ExperienceQA.subMenus.NewsAndArticles);
     await expirianceQAPage.saveArticleCountsToFile('ArticleCount_Sorted');
   });
 
   test('TC09 - Verify Industry articles', async ({ page }) => {
-    await expirianceQAPage.navigateToExpirianceQaPage();
+    await sharedStep.navigateToSubMenu(MenuItems.ExperienceQA.name, MenuItems.ExperienceQA.subMenus.Industries);
     //await expirianceQAPage.
   });
 });

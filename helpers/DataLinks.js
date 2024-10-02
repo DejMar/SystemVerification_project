@@ -86,11 +86,5 @@ export const MenuItems = {
             TheConsultantRole: 'The Consultant role',
             OpenPositions: 'Open postions'
         }
-    },
-    Articles: {
-        name: 'Articles',
-        subMenus: {
-            // Add submenus for Articles if available
-        }
     }
 };
