@@ -25,7 +25,7 @@ test.describe('Careers page', () => {
     await sharedStep.verifyCurrentUrl(siteURL.OpenPositionsURL);
     const selectAndReturnRandomLocation = await careersPage.selectAndReturnRandomLocation();
     console.log('Returned value: ' + selectAndReturnRandomLocation);
-    //await page.pause();
+    await page.pause();
     //await careersPage.verifyAllLocationsContainSelectedOption(selectAndReturnRandomLocation);
   });
 });
