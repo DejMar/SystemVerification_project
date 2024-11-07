@@ -41,5 +41,6 @@ test.describe('Experiance QA page', () => {
   test('TC09 - Verify Industry articles', async ({ page }) => {
     await sharedStep.navigateToSubMenu(MenuItems.ExperienceQA.name, MenuItems.ExperienceQA.subMenus.Industries);
     await expirianceQAPage.saveArticleCountsToFile('IndustryArticleCount_Sorted');
+    await expirianceQAPage.saveIndustryDataToJson('IndustryArticleInfo');
   });
 });
